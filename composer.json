@@ -1,0 +1,11 @@
+{
+    "name": "appdevl/phpunit-selenium2-adapter",
+    "homepage": "http://github.com/thomasalbright/phpunit-selenium2-adapter",
+    "license": "Apache",
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {"AppDevl\\Selenium2Adapter\\": "src/"}
+    }
+}
