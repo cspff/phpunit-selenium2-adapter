@@ -15,25 +15,27 @@
  * limitations under the License.
  */
 
+namespace AppDevl\Selenium2Adapter;
+
 /**
  * Implements adapter for migration from PHPUnit_Extensions_SeleniumTestCase
  * to PHPUnit_Extensions_Selenium2TestCase.
- * 
- * If user's TestCase class is implemented with old format (with commands 
+ *
+ * If user's TestCase class is implemented with old format (with commands
  * like open, type, waitForPageToLoad), it should extend MigrationToSelenium2
  * for Selenium 2 WebDriver support.
  */
-class MigrationToSelenium2 extends PHPUnit_Extensions_Selenium2TestCase{
-    
+class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase{
+
     public function open($url){
         $this->url($url);
     }
-    
+
     public function type($selector, $value){
         $input = $this->byQuery($selector);
         $input->value($value);
     }
-    
+
     protected function byQuery($selector){
         if (preg_match('/^\/\/(.+)/', $selector)){
             /* "//a[contains(@href, '?logout')]" */
@@ -57,21 +59,21 @@ class MigrationToSelenium2 extends PHPUnit_Extensions_Selenium2TestCase{
                     $cssSelector = str_replace('..', '.', $match[2]);
                     return $this->byCssSelector($cssSelector);
                     break;
-                    
+
             }
         }
         throw new Exception("Unknown selector '$selector'");
     }
-    
+
     protected function waitForPageToLoad($timeout){
         $this->timeouts()->implicitWait($timeout);
     }
-    
+
     public function click($selector){
         $input = $this->byQuery($selector);
         $input->click();
     }
-    
+
     public function select($selectSelector, $optionSelector){
         $selectElement = parent::select($this->byQuery($selectSelector));
         if (preg_match('/label=(.+)/', $optionSelector, $match)){
@@ -81,9 +83,9 @@ class MigrationToSelenium2 extends PHPUnit_Extensions_Selenium2TestCase{
         } else {
             throw new Exception("Unknown option selector '$optionSelector'");
         }
-        
+
     }
-    
+
     public function isTextPresent($text){
         if (strpos($this->byCssSelector('body')->text(), $text) !== false){
             return true;
@@ -91,7 +93,7 @@ class MigrationToSelenium2 extends PHPUnit_Extensions_Selenium2TestCase{
             return false;
         }
     }
-    
+
     public function isElementPresent($selector){
         $element = $this->byQuery($selector);
         if ($element->name()){
@@ -100,7 +102,7 @@ class MigrationToSelenium2 extends PHPUnit_Extensions_Selenium2TestCase{
             return false;
         }
     }
-    
+
     public function getText($selector){
         $element = $this->byQuery($selector);
         return $element->text();

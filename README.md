@@ -1,4 +1,4 @@
-PHPUnit MigrationToSelenium2 Class
+PHPUnit Selenium2WithAdapterTestCase Class
 ==========================
 
 ### Description
@@ -8,14 +8,14 @@ to PHPUnit_Extensions_Selenium2TestCase.
 
 If user's TestCase class is implemented with old format 
 (with commands like open, type, waitForPageToLoad), 
-it should extend MigrationToSelenium2 for Selenium 2 WebDriver support.
+it should extend Selenium2WithAdapterTestCase for Selenium 2 WebDriver support.
 
 ### Restrictions
 
 It does not work properly with javascript actions.
 You have to rewrite you test code with [WaitUntil](https://github.com/sebastianbergmann/phpunit-selenium/blob/master/Tests/Selenium2TestCase/WaitUntilTest.php#L55) 
 if you use click with ajax actions or click with visibility changes.
-It makes this MigrationToSelenium2 useless.
+It makes this Selenium2WithAdapterTestCase useless.
 
 ## Implemented methods
 
