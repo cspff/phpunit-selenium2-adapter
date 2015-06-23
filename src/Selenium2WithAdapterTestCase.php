@@ -66,7 +66,7 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
         }
     }
 
-    protected function waitForPageToLoad($timeout){
+    protected function waitForPageToLoad($timeout = 30000){
         $this->timeouts()->implicitWait($timeout);
     }
 
