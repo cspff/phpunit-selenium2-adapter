@@ -118,6 +118,10 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
         $element = $this->byCssSelector('body');
         $this->assertContains($expected, $element->text());
     }
+
+    public function getHtmlSource() {
+        return $this->source();
+    }
 }
 
 
