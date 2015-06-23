@@ -108,6 +108,11 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
         $element = $this->byQuery($selector);
         return $element->text();
     }
+
+    public function clickAndWait($selector) {
+        $element = $this->byQuery($selector);
+        $element->click();
+    }
 }
 
 
