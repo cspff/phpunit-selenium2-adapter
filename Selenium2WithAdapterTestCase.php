@@ -113,6 +113,11 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
         $element = $this->byQuery($selector);
         $element->click();
     }
+
+    public function assertTextPresent($expected) {
+        $element = $this->byCssSelector('body');
+        $this->assertContains($expected, $element->text());
+    }
 }
 
 
