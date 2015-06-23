@@ -61,8 +61,9 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
                     break;
 
             }
+        } else {
+            return $this->byName($selector);
         }
-        throw new Exception("Unknown selector '$selector'");
     }
 
     protected function waitForPageToLoad($timeout){
