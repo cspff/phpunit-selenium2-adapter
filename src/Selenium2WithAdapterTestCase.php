@@ -88,7 +88,7 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
         } else if (preg_match('/value=(.+)/', $optionSelector, $match)){
             $selectElement->selectOptionByValue($match[1]);
         } else {
-            throw new Exception("Unknown option selector '$optionSelector'");
+            throw new \Exception("Unknown option selector '$optionSelector'");
         }
 
     }
