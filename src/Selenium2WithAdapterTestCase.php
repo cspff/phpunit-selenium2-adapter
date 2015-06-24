@@ -127,6 +127,10 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
     public function getHtmlSource() {
         return $this->source();
     }
+
+    public function addSelection($selectSelector, $optionSelector) {
+        return $this->select($selectSelector, $optionSelector);
+    }
 }
 
 
