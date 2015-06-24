@@ -33,6 +33,7 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
 
     public function type($selector, $value){
         $input = $this->byQuery($selector);
+        $input->clear();
         $input->value($value);
     }
 
