@@ -62,7 +62,12 @@ class Selenium2WithAdapterTestCase extends \PHPUnit_Extensions_Selenium2TestCase
 
             }
         } else {
-            return $this->byName($selector);
+            try {
+                $return = $this->byId($selector);
+                return $return;
+            } catch (\PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
+                return $this->byName($selector);
+            }
         }
     }
 
